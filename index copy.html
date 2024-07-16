@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gustavo's My Blog</title>
+    <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+    <main></main>
+    <div>
+        \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.0.3/showdown.min.js"></script>
+<script>
+    const converter = new showdown.Converter();
+    //const text = "# Hello, Markdown!";
+    // get markdown text from main.md 
+    const text = fetch('main.md')
+    .then(response => response.ok? response.text() : Promise.reject(response.status))
+    .then(text => {
+        console.log(text);
+        const html = converter.makeHtml(text);
+        document.querySelector('main').innerHTML = html;
+        
+    })
+    .catch(console.error);
+
+    
+</script>
+</body>
+</html>
+
